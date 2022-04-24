@@ -55,10 +55,10 @@ class _LoginPageState extends State<LoginPage> {
                       height: 50,
                     ),
                     Image.asset(
-                      "assets/icon.webp",
-                      height: 120,
+                      "assets/nekoarc.png",
+                      height: 200,
                     ),
-                    SizedBox(height: 150),
+                    SizedBox(height: 70),
                     Text(
                       "Utilice una red social:",
                       style: GoogleFonts.lato(

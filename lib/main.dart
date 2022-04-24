@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:practica_2_1/auth/bloc/auth_bloc.dart';
+import 'package:practica_2_1/content/favmusic/bloc/mimusica_bloc.dart';
 import 'package:practica_2_1/content/song/bloc/song_bloc.dart';
 import 'package:practica_2_1/home/homepage.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -19,6 +20,7 @@ Future main() async {
       BlocProvider(create: (context) => AuthBloc()..add(VerifyAuthEvent())),
       BlocProvider(create: (context) => RecorderBloc()),
       BlocProvider(create: (context) => SongBloc()),
+      BlocProvider(create: (context) => MiMusicaBloc()..add(GetMySongsEvent())),
     ],
     child: MyApp(),
   ));
