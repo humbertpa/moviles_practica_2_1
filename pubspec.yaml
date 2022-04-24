@@ -1,0 +1,40 @@
+name: practica_2_1
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  avatar_glow: ^2.0.2
+  url_launcher: ^6.0.20
+  record: ^3.0.4
+  flutterfire_ui: ^0.4.0+2
+  flutter_dotenv: ^5.0.2
+  firebase: ^9.0.2
+  firebase_core: ^1.14.1
+  firebase_auth: ^3.3.14
+  cloud_firestore: ^3.1.12
+  flutter_bloc: ^8.0.1
+  flutter_signin_button: ^2.0.0
+  google_fonts: ^2.3.1
+  google_sign_in: ^5.3.0
+  equatable: ^2.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+#icon obtained from https://www.flaticon.com/free-icons/music
