@@ -50,7 +50,7 @@ class UserAuthRepository {
       await FirebaseFirestore.instance
           .collection('users')
           .doc(uid)
-          .set({'uid': uid, 'user-favourites': []});
+          .set({'user-favourites': []});
     } else {
       print('user already exists');
       return;

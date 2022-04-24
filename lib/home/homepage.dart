@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         shape: CircleBorder(),
         child: Image.asset(
             //icon obtained from https://www.flaticon.com/free-icons/music
-            'assets/buttonicon.png'),
+            'assets/musical-note.png'),
       ),
     );
   }
@@ -75,7 +75,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           turns: _animation,
           child: Image.asset(
             //icon obtained from https://www.flaticon.com/free-icons/music
-            'assets/buttonicon.png',
+            'assets/musical-note.png',
             height: 200,
           ),
         ),
@@ -107,30 +107,29 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
             SizedBox(height: 50),
             BlocConsumer<RecorderBloc, RecorderState>(
-                builder: (context, state) {
-                  print(state);
-                  if (state is RecorderListeningState) {
-                    print("el estado es $state");
-                    return _avatarMovimiento();
-                  } else if (state is RecorderSuccessState) {
-                    print("el estado es $state");
-                    print(state.myData);
-                    return GestureDetector(
-                      onTap: () => BlocProvider.of<RecorderBloc>(context)
-                          .add(RecordEvent()),
-                      child: _avatarInmovil(),
-                    );
-                  } else {
-                    print("el estado es $state");
-                    return GestureDetector(
-                      onTap: () => BlocProvider.of<RecorderBloc>(context)
-                          .add(RecordEvent()),
-                      child: _avatarInmovil(),
-                    );
-                  }
-                  return (Text("el estado es $state"));
-                },
-                listener: (context, state) {}),
+              builder: (context, state) {
+                print(state);
+                if (state is RecorderListeningState) {
+                  print("el estado es $state");
+                  return _avatarMovimiento();
+                } else {
+                  print("el estado es $state");
+                  return GestureDetector(
+                    onTap: () => BlocProvider.of<RecorderBloc>(context)
+                        .add(RecordEvent()),
+                    child: _avatarInmovil(),
+                  );
+                }
+              },
+              listener: (context, state) {
+                if (state is RecorderSuccessState) {
+                  print("el estado es $state");
+                  print(state.myData);
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => SongPage(datos: state.myData)));
+                }
+              },
+            ),
             SizedBox(height: 50),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

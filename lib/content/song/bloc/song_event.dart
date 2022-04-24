@@ -6,3 +6,11 @@ abstract class SongEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class OnLikedSongEvent extends SongEvent {
+  final Map<dynamic, dynamic> songData;
+
+  OnLikedSongEvent({required this.songData});
+  @override
+  List<Object> get props => [songData];
+}
