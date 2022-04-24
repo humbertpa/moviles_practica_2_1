@@ -85,7 +85,7 @@ class RecorderBloc extends Bloc<RecorderEvent, RecorderState> {
           bitRate: 128000,
           samplingRate: 44100,
         );
-        await Future.delayed(Duration(seconds: 7));
+        await Future.delayed(Duration(seconds: 10));
         return await _record.stop();
       } else {
         emit(RecorderErrorState());
@@ -114,6 +114,7 @@ class RecorderBloc extends Bloc<RecorderEvent, RecorderState> {
     );
     if (response.statusCode == 200) {
       //print("Success");
+      print(jsonDecode(response.body));
       return jsonDecode(response.body);
     } else {
       throw Exception('Failed to load json');
@@ -123,8 +124,6 @@ class RecorderBloc extends Bloc<RecorderEvent, RecorderState> {
 
 Future<String> fileConvert(File file) async {
   List<int> fileBytes = await file.readAsBytes();
-  //print("File bytes: $fileBytes");
   String base64String = base64Encode(fileBytes);
-  //print("Base64 string: $base64String");
   return base64String;
 }
