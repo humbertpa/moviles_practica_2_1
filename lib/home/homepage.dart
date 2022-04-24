@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:practica_2_1/home/bloc/recorder_bloc.dart';
 import 'package:practica_2_1/login/login.dart';
 import '../auth/bloc/auth_bloc.dart';
+import '../content/favmusic/bloc/mimusica_bloc.dart';
 import '../content/favmusic/favmusic.dart';
 import '../content/song/songpage.dart';
 import 'package:practica_2_1/env.dart';
@@ -140,10 +141,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     icon: Icon(
                       Icons.favorite,
                     ),
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => FavouritePage())),
+                    onPressed: () {
+                      BlocProvider.of<MiMusicaBloc>(context)
+                          .add(GetMySongsEvent());
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => FavouritePage()));
+                    },
                   ),
                 ),
                 CircleAvatar(
